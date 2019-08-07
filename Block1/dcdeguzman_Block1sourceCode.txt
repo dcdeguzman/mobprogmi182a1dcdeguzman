@@ -1,0 +1,86 @@
+//MainActivity.java
+package com.example.myapplication;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    Button buttonBlue, buttonPink;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        buttonBlue = (Button) findViewById(R.id.button_blueinvinsible);
+        buttonPink = (Button) findViewById(R.id.button_pinkPanther);
+    }
+
+    public void toDo(View v){
+        if (v.equals(buttonBlue))
+            // invisibility
+            v.setVisibility(View.INVISIBLE);
+        if (v.equals(buttonPink))
+            // pop-up
+            Toast.makeText(getApplicationContext(),
+                    "Click the Blue button",
+                    Toast.LENGTH_SHORT).show();
+    }
+}
+
+
+//activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:visibility="visible"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/button_blueinvinsible"
+        android:layout_width="388dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="307dp"
+        android:layout_marginRight="307dp"
+        android:layout_marginBottom="667dp"
+        android:background="#AED2FF"
+        android:onClick="toDo"
+        android:text="@string/the_invinsible_man_s_to_do_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/button_pinkPanther"
+        android:layout_width="388dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="609dp"
+        android:background="#FD9BF3"
+        android:onClick="toDo"
+        android:text="@string/the_pink_panther_s_to_do_list"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button_blueinvinsible"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
